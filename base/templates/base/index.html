@@ -9,5 +9,10 @@
 <body>
 <h1>Welcome to DRF course</h1>
 <hr>
+<ul>
+    {% for todo in todos %}
+        <li>{{ todo.title }}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>
