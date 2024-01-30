@@ -17,5 +17,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index_page_view, name='home_page_view'),
+    # path('', views.index_page_view, name='home_page_view'),
+    path('', views.todos_json, name='todos_json_api_view'),
+
 ]
