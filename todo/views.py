@@ -19,4 +19,4 @@ def all_todos(request: Request):
     # The second input: the number of data (many or single)
     todo_serializer = TodoSerializer(todos, many=True)
     # We pass the data in the response
-    return Response(todo_serializer.data, status.HTTP_202_ACCEPTED)
+    return Response(todo_serializer.data, status.HTTP_200_OK)
