@@ -16,8 +16,10 @@ def index_page_view(request: HttpRequest):
 
 
 # Function_base_view in api view
+# The type of requests we want it to process ( we have 4 request models in API: 1. Get, 2. Post, 3. Delete, 4. Put )
 @api_view(['GET'])
 def todos_json(request: Request):
     # Fetch all information and display desired values
+    # Note: This information must be converted into a list to access, otherwise we need a for loop to access
     todos = list(Todo.objects.order_by('priority').all().values('title', 'content', 'is_done'))
     return Response({'todos': todos}, status.HTTP_200_OK)
