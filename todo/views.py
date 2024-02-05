@@ -33,6 +33,8 @@ def all_todos(request: Request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status.HTTP_201_CREATED)
+        else:
+            return Response(None, status.HTTP_400_BAD_REQUEST)
 
     return Response(None, status.HTTP_400_BAD_REQUEST)
 
