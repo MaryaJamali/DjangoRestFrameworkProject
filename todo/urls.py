@@ -18,4 +18,5 @@ from . import views
 
 urlpatterns = [
     path('', views.all_todos, name='all_todos_json_api_view'),
+    path('<int:todo_id>', views.todo_detail_view, name='todo_detail_api_view'),
 ]
