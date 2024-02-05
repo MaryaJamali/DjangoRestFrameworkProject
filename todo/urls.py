@@ -17,6 +17,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.all_todos, name='all_todos_json_api_view'),
-    path('<int:todo_id>', views.todo_detail_view, name='todo_detail_api_view'),
+    # Addressing as a function
+    path('', views.all_todos, name='all_todos_view'),
+    path('<int:todo_id>', views.todo_detail_view, name='todo_detail_view'),
+    # Addressing as a class
+    path('cbv/', views.TodosListApiView.as_view(), name='todos_list_api_view'),
+    path('cbv/<int:todo_id>', views.TodosDetailApiView.as_view(), name='todos_detail_api_view'),
 ]
