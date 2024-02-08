@@ -119,3 +119,21 @@ class TodosListMixinApiView(mixins.ListModelMixin, mixins.CreateModelMixin, gene
 
     def post(self, request: Request):
         return self.create(request)
+
+
+# mixins.CreateModelMixin ---> GET command
+# mixins.CreateModelMixin ---> PUT command
+# mixins.CreateModelMixin ---> DELETE command
+class TodosDetailMixinApiView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
+                              generics.GenericAPIView):
+    queryset = Todo.objects.order_by('priority').all()
+    serializer_class = TodoSerializer
+
+    def get(self, request: Request, pk):
+        return self.retrieve(request, pk)
+
+    def put(self, request: Request, pk):
+        return self.update(request, pk)
+
+    def delete(self, request: Request, pk):
+        return self.destroy(request, pk)
