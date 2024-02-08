@@ -23,4 +23,7 @@ urlpatterns = [
     # Addressing as a class
     path('cbv/', views.TodosListApiView.as_view(), name='todos_list_api_view'),
     path('cbv/<int:todo_id>', views.TodosDetailApiView.as_view(), name='todos_detail_api_view'),
+    # Addressing as a class for mixins
+    path('mixins/', views.TodosListMixinApiView.as_view()),
+    path('mixins/<pk>', views.TodosDetailMixinApiView.as_view()),
 ]
