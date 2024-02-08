@@ -121,9 +121,9 @@ class TodosListMixinApiView(mixins.ListModelMixin, mixins.CreateModelMixin, gene
         return self.create(request)
 
 
-# mixins.CreateModelMixin ---> GET command
-# mixins.CreateModelMixin ---> PUT command
-# mixins.CreateModelMixin ---> DELETE command
+# mixins.RetrieveModelMixin ---> GET command
+# mixins.UpdateModelMixin ---> PUT command
+# mixins.DestroyModelMixin ---> DELETE command
 class TodosDetailMixinApiView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
                               generics.GenericAPIView):
     queryset = Todo.objects.order_by('priority').all()
