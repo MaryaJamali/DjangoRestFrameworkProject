@@ -26,4 +26,7 @@ urlpatterns = [
     # Addressing as a class for mixins
     path('mixins/', views.TodosListMixinApiView.as_view(), name='todos_list_mixin_api_view'),
     path('mixins/<pk>', views.TodosDetailMixinApiView.as_view(), name='todos_detail_mixin_api_view'),
+    # Addressing as a class for generic
+    path('generics/', views.TodosListGenericApiView.as_view(), name='todos_list_generic_api_view'),
+    path('generics/<pk>', views.TodosDetailGenericApiView.as_view(), name='todos_detail_generic_api_view'),
 ]
