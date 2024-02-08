@@ -106,7 +106,7 @@ class TodosDetailApiView(APIView):
         return Response(None, status.HTTP_204_NO_CONTENT)
 
 
-# Class_base_view in api view
+# Class_base_view in api view with Mixins
 # mixins.ListModelMixin ---> GET command
 # mixins.CreateModelMixin ---> POST command
 # generics.GenericAPIView ---> To become an API View
@@ -137,3 +137,10 @@ class TodosDetailMixinApiView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin
 
     def delete(self, request: Request, pk):
         return self.destroy(request, pk)
+
+
+# Class_base_view in api view with Generic
+class TodosListGenericApiView(generics.ListCreateAPIView):
+    queryset = Todo.objects.order_by('priority').all()
+    serializer_class = TodoSerializer
+
