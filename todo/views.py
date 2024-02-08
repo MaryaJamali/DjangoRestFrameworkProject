@@ -7,6 +7,7 @@ from .serializers import TodoSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
+from rest_framework import generics, mixins
 
 
 # Converting data in the database to a format such as JSON for use in other applications such as mobile phones
@@ -103,3 +104,18 @@ class TodosDetailApiView(APIView):
         todo = self.get_object(todo_id)
         todo.delete()
         return Response(None, status.HTTP_204_NO_CONTENT)
+
+
+# Class_base_view in api view
+# mixins.ListModelMixin ---> GET command
+# mixins.CreateModelMixin ---> POST command
+# generics.GenericAPIView ---> To become an API View
+class TodosListMixinApiView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+    queryset = Todo.objects.order_by('priority').all()
+    serializer_class = TodoSerializer
+
+    def get(self, request: Request):
+        return self.list(request)
+
+    def post(self, request: Request):
+        return self.create(request)
