@@ -36,4 +36,6 @@ urlpatterns = [
     path('generics/<pk>', views.TodosDetailGenericApiView.as_view(), name='todos_detail_generic_api_view'),
     # Addressing as a class for viewsets
     path('viewsets/', include(router.urls), name='todos_viewsets_api_view'),
+    # Addressing as a class for user
+    path('users/', views.UsersGenericApiView.as_view(), name='user_list_generic_api_view'),
 ]

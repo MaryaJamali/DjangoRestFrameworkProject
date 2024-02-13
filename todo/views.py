@@ -159,7 +159,7 @@ class TodosViewSetApiView(viewsets.ModelViewSet):
     serializer_class = TodoSerializer
 
 
-# Class_base_view in api view with Generic
+# Class_base_view in api view with Generic for user
 class UsersGenericApiView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerialzier
