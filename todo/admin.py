@@ -6,4 +6,4 @@ from . import models
 @admin.register(models.Todo)
 class TodoAdmin(admin.ModelAdmin):
     # Display fields on the Admin page
-    list_display = ['title', 'content', 'priority', 'is_done']
+    list_display = ['title', 'user', 'content', 'priority', 'is_done']
