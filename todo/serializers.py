@@ -16,6 +16,7 @@ class TodoSerializer(serializers.ModelSerializer):
 # fetch the user list and in addition to serializing the user information,
 # it displays the serializing todos list of each user.
 class UserSerialzier(serializers.ModelSerializer):
+    # The name of the 'todos' is taken from the 'user' field model of 'related_name' part
     todos = TodoSerializer(read_only=True, many=True)
 
     class Meta:
