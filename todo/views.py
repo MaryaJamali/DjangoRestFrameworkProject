@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import generics, mixins
-
+from rest_framework import viewsets
 
 # Converting data in the database to a format such as JSON for use in other applications such as mobile phones
 # is called serializer and vice versa is called de-serializer.
@@ -146,5 +146,11 @@ class TodosListGenericApiView(generics.ListCreateAPIView):
 
 
 class TodosDetailGenericApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Todo.objects.order_by('priority').all()
+    serializer_class = TodoSerializer
+
+
+# Class_base_view in api view with Viewsets
+class TodosViewSetApiView(viewsets.ModelViewSet):
     queryset = Todo.objects.order_by('priority').all()
     serializer_class = TodoSerializer
