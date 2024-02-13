@@ -13,6 +13,8 @@ class TodoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# fetch the user list and in addition to serializing the user information,
+# it displays the serializing todos list of each user.
 class UserSerialzier(serializers.ModelSerializer):
     todos = TodoSerializer(read_only=True, many=True)
 
