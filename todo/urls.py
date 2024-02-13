@@ -13,8 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
+
+# Basic settings for addressing viewsets
+router = DefaultRouter()
+router.register('', views.TodosViewSetApiView)
 
 urlpatterns = [
     # Addressing as a function
@@ -29,4 +34,6 @@ urlpatterns = [
     # Addressing as a class for generic
     path('generics/', views.TodosListGenericApiView.as_view(), name='todos_list_generic_api_view'),
     path('generics/<pk>', views.TodosDetailGenericApiView.as_view(), name='todos_detail_generic_api_view'),
+    # Addressing as a class for viewsets
+    path('viewsets/', include(router.urls), name='todos_viewsets_api_view'),
 ]
