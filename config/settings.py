@@ -120,3 +120,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Note: These settings are global and only applies to viewsets and generics
+# Settings related to the framework
+REST_FRAMEWORK = {
+    # Paging system settings
+    # The address of the desired class + the name of the desired class
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2
+}
