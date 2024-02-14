@@ -121,11 +121,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # Note: These settings are global and only applies to viewsets and generics
-# Settings related to the framework
+# Paging system settings related to the framework
 REST_FRAMEWORK = {
-    # Paging system settings
     # The address of the desired class + the name of the desired class
+    # Note: If we use " PageNumberPagination " , it uses ?page=... , and if we use " LimitOffsetPagination " ,
+    # it uses ?limit=... ( page number ) & offset=... ( Step value )
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 2
 }

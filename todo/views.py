@@ -143,6 +143,7 @@ class TodosDetailMixinApiView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin
         return self.destroy(request, pk)
 
 
+# Custom paging system settings with class definition
 class TodosGenericApiViewPagination(PageNumberPagination):
     page_size = 3
 
@@ -163,6 +164,7 @@ class TodosDetailGenericApiView(generics.RetrieveUpdateDestroyAPIView):
 class TodosViewSetApiView(viewsets.ModelViewSet):
     queryset = Todo.objects.order_by('priority').all()
     serializer_class = TodoSerializer
+    # Paging system settings specifically directly
     pagination_class = LimitOffsetPagination
 
 
