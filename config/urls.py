@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView,)
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 # Addressing App
 urlpatterns = [
@@ -27,5 +28,8 @@ urlpatterns = [
     # Addresses related to djangorestframework-simplejwt
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # Addresses related to drf_spectacular
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),  # YOUR PATTERNS
+    path('api/schema/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),  # Optional UI
     path('admin/', admin.site.urls),
 ]
