@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # External App
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     # Internal App
     'base',
     'todo',
@@ -121,7 +122,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 # Note: These settings are global and only applies to viewsets and generics
 # Paging system settings related to the framework
 REST_FRAMEWORK = {
@@ -133,7 +133,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 2,
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication'
-        'rest_framework.authentication.TokenAuthentication'
+        # 'rest_framework.authentication.TokenAuthentication'
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated'
