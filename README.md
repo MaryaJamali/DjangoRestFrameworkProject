@@ -360,6 +360,7 @@ class TodosViewSetApiView(viewsets.ModelViewSet):
     pagination_class = LimitOffsetPagination
 ```
 <br>
+
 🌟 Addressing in the `urls.py` file <br>
 
 ```
@@ -377,7 +378,7 @@ urlpatterns = [
 ```
 ## Display general user information <br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/user-1.png?raw=true" width="1000" height="500" alt="user"/><br>
-<img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/user-1.png?raw=true" width="1000" height="500" alt="user"/>
+<img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/user-2.png?raw=true" width="1000" height="500" alt="user"/>
 <br><br>
 
 ```
@@ -387,6 +388,7 @@ class UsersGenericApiView(generics.ListAPIView):
     serializer_class = UserSerialzier
 ```
 <br>
+
 🌟 Addressing in the `urls.py` file <br>
 
 ```
