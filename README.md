@@ -444,7 +444,7 @@ SIMPLE_JWT = {
 ```
 <br>
 
- `urls.py` file <br>
+🌟 `urls.py` file <br>
  
 ```
 from django.contrib import admin
@@ -457,7 +457,9 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 urlpatterns = [
     path('', include('base.urls')),
     path('todos/', include('todo.urls')),
+    # Addresses related to BasicAuthentication
     path('api-auth/', include('rest_framework.urls')),
+    # Addresses related to TokenAuthentication
     path('auth-token/', obtain_auth_token, name='generate_auth_token'),
     # Addresses related to djangorestframework-simplejwt
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
