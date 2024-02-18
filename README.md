@@ -335,8 +335,7 @@ class TodosDetailGenericApiView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializer
   ```
 🌟 Addressing in the `urls.py` file <br>
-```
-python
+```python
 from django.urls import path, include
 from . import views
 urlpatterns = [
