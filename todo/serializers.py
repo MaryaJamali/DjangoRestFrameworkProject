@@ -7,6 +7,14 @@ User = get_user_model()
 
 
 class TodoSerializer(serializers.ModelSerializer):
+
+    # Setting up the validation system personal
+    # def validate_..... --> The name of the field we want to validate
+    def validate_priority(self, priority):
+        if priority < 10 or priority > 20:
+            raise serializers.ValidationError('priority is not ok')
+        return priority
+
     class Meta:
         model = Todo
         # fields = ['id', 'title', 'content']
