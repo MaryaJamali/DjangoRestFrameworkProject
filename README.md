@@ -4,18 +4,18 @@ For anyone looking to get into web API development or loves building APIs in Pyt
 This project is very useful and great for learning Django Rest framework.💻
 ### Instructions
 ___
-1.Prerequisites<br>
+1. Prerequisites<br>
 Download and install the latest version of Python and start the Django installation process<br>
 It's time to install the relevant packages from inside the "req.text" file. The first real step is to start the Django Rest framework, which is installed with the command<br>
-`pip install django_rest_framework`<br>
-Note 📝: To separate dependencies, you can create a virtual environment, this is great, but you can skip this step<br>
-2.Simulate your repository<br>
-`git clone https://github.com/MaryaJamali/DjangoRestFrameworkProject.git`<br>
-3.Run the program
+`pip install django_rest_framework` <br><br>
+Note 📝: To separate dependencies, you can create a virtual environment, this is great, but you can skip this step <br><br>
+2. Simulate your repository<br>
+`git clone https://github.com/MaryaJamali/DjangoRestFrameworkProject.git` <br><br>
+3. Run the program
 ### Description
 ___
 🌟 Creating a Model for the App<br>
-models.py file:<br>
+`models.py` file :<br>
 ```
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -39,7 +39,7 @@ class Todo(models.Model):
         # Set the desired table name
         db_table = 'todos'
 ```
-admin.py file:<br>
+`admin.py` file :<br>
 ```
 from django.contrib import admin
 from . import models
@@ -114,9 +114,9 @@ from rest_framework.permissions import IsAuthenticated
 User = get_user_model()
 ```
 <br>
-## Adding data list with GET as a Function
+🖥 Adding data list with GET as a Function<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/function-list.png?raw=true" width="1000" height="500" alt="function-list"/><br>
-## Adding data list with POST as a Function
+🖥 Adding data list with POST as a Function<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/function%20&%20class%20-%20post.png?raw=true" width="1000" height="500" alt="function-list"/>
 <br><br>
 
@@ -147,7 +147,7 @@ def all_todos(request: Request):
     return Response(None, status.HTTP_400_BAD_REQUEST)
 ```
 <br>
-## Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Function
+🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Function<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/function-detail.png?raw=true" width="1000" height="500" alt="function-detail"/><br><br>
 
 ```
@@ -184,9 +184,9 @@ urlpatterns = [
 ]
 ```
 <br>
-## Adding data list with GET as a Class
+🖥 Adding data list with GET as a Class<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/class-list.png?raw=true" width="1000" height="500" alt="class-list"/><br>
-## Adding data list with POST as a Class
+🖥 Adding data list with POST as a Class<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/function%20&%20class%20-%20post.png?raw=true" width="1000" height="500" alt="class-list"/>
 <br><br>
 
@@ -207,7 +207,7 @@ class TodosListApiView(APIView):
             return Response(None, status.HTTP_400_BAD_REQUEST)
 ```
 <br>
-## Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Class
+🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Class<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/class-detail.png?raw=true" width="1000" height="500" alt="class-detail"/><br><br>
 
 ```
@@ -248,9 +248,9 @@ urlpatterns = [
 ]
 ```
 <br>
-## Adding data list with GET as a Mixins
+🖥 Adding data list with GET as a Mixins<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/mixins-list.png?raw=true" width="1000" height="500" alt="mixins-list"/><br>
-## Adding data list with POST as a Mixins
+🖥 Adding data list with POST as a Mixins<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/mixins%20&%20generics%20&%20viewsets%20-%20post.png?raw=true" width="1000" height="500" alt="mixins-list"/>
 <br><br>
 
@@ -270,7 +270,7 @@ class TodosListMixinApiView(mixins.ListModelMixin, mixins.CreateModelMixin, gene
         return self.create(request)
 ```
 <br>
-## Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Mixins
+🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Mixins<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/mixins-detail.png?raw=true" width="1000" height="500" alt="mixins-detail"/><br><br>
 
 ```
@@ -302,9 +302,9 @@ urlpatterns = [
 ]
 ```
 <br>
-## Adding data list with GET as a generics
+🖥 Adding data list with GET as a generics<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/generics-list.png?raw=true" width="1000" height="500" alt="generics-list"/><br>
-## Adding data list with POST as a generics
+🖥 Adding data list with POST as a generics<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/mixins%20&%20generics%20&%20viewsets%20-%20post.png?raw=true" width="1000" height="500" alt="generics-list"/>
 <br><br>
 
@@ -325,7 +325,7 @@ class TodosListGenericApiView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 ```
 <br>
-## Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a generics
+🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a generics<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/generics-detail.png?raw=true" width="1000" height="500" alt="generics-detail"/><br><br>
 
 ```
@@ -344,11 +344,11 @@ urlpatterns = [
 ]
 ```
 <br>
-## Adding data list with GET as a viewsets
+🖥 Adding data list with GET as a viewsets<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/viewsets-list.png?raw=true" width="1000" height="500" alt="viewsets-list"/><br>
-## Adding data list with POST as a viewsets
+🖥 Adding data list with POST as a viewsets<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/mixins%20&%20generics%20&%20viewsets%20-%20post.png?raw=true" width="1000" height="500" alt="viewsets-list"/>
-## Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a viewsets
+🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a viewsets<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/viewsets-detail.png?raw=true" width="1000" height="500" alt="viewsets-detail"/><br><br>
 
 ```
@@ -376,10 +376,11 @@ urlpatterns = [
     path('viewsets/', include(router.urls), name='todos_viewsets_api_view'),
 ]
 ```
-## Display general user information <br>
+<br>
+🖥 Display general user information <br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/user-1.png?raw=true" width="1000" height="500" alt="user"/><br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/user-2.png?raw=true" width="1000" height="500" alt="user"/>
-<br><br>
+<br>
 
 ```
 # Class_base_view in api view with Generic for user
@@ -400,3 +401,6 @@ urlpatterns = [
     path('users/', views.UsersGenericApiView.as_view(), name='user_list_generic_api_view'),
 ]
 ```
+### Author
+___
+Maryam Jamali 😘
