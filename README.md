@@ -15,7 +15,7 @@ Note 📝: To separate dependencies, you can create a virtual environment, this 
 ### Description
 ___
 🌟 Creating a Model for the App<br>
-`models.py` file :<br>
+`models.py` file <br>
 ```
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -39,7 +39,7 @@ class Todo(models.Model):
         # Set the desired table name
         db_table = 'todos'
 ```
-`admin.py` file :<br>
+`admin.py` file <br>
 ```
 from django.contrib import admin
 from . import models
@@ -401,6 +401,74 @@ urlpatterns = [
     path('users/', views.UsersGenericApiView.as_view(), name='user_list_generic_api_view'),
 ]
 ```
+<br>
+🖥 Settings related to the authentication system in three ways and Use standard appearance with swagger <br>
+
+ `settings.py` file <br>
+
+```
+# Note: These settings are global and only applies to viewsets and generics
+# Paging system settings related to the framework
+REST_FRAMEWORK = {
+    # The address of the desired class + the name of the desired class
+    # Note: If we use " PageNumberPagination " , it uses ?page=... , and if we use " LimitOffsetPagination " ,
+    # it uses ?limit=... ( page number ) & offset=... ( Step value )
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication'
+        # 'rest_framework.authentication.TokenAuthentication'
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.IsAuthenticated'
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# Setting the drf_spectacular
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
+
+# Setting the updateing time
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
+```
+<br>
+
+ `urls.py` file <br>
+ 
+```
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView,)
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
+# Addressing App
+urlpatterns = [
+    path('', include('base.urls')),
+    path('todos/', include('todo.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('auth-token/', obtain_auth_token, name='generate_auth_token'),
+    # Addresses related to djangorestframework-simplejwt
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # Addresses related to drf_spectacular
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),  # YOUR PATTERNS
+    path('api/schema/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),  # Optional UI
+    path('admin/', admin.site.urls),
+]
+```
+
 ### Author
 ___
 Maryam Jamali 😘
