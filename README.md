@@ -17,8 +17,7 @@ ___
 🌟 Creating a Model for the App<br>
 `models.py` file <br>
 
-```
-python
+```python
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -42,8 +41,7 @@ class Todo(models.Model):
         db_table = 'todos'
 ```
 `admin.py` file <br>
-```
-python
+```python
 from django.contrib import admin
 from . import models
 
@@ -60,8 +58,7 @@ class TodoAdmin(admin.ModelAdmin):
 `python manage.py createsuperuser`<br><br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/admin.png?raw=true" width="1000" height="500" alt="admin"/><br><br>
 🌟 to enable APIs to read data more easily, serializers transform complex Django models into JSON objects.So we need to create a file called `serializers.py‍`<br>
-```
-python
+```python
 from rest_framework import serializers
 from .models import Todo
 from django.contrib.auth import get_user_model
@@ -98,8 +95,7 @@ class UserSerialzier(serializers.ModelSerializer):
 ```
 🌟 Using the serializers and Data models, we now have to update the API view<br>
 Note 📝: Importing the entire package that must be done in the `views.py` file<br>
-```
-python
+```python
 from django.shortcuts import render
 # The Request, Response is the same as the HttpRequest, HttpResponse but with more features
 from rest_framework.request import Request
@@ -125,8 +121,7 @@ User = get_user_model()
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/function%20&%20class%20-%20post.png?raw=true" width="1000" height="500" alt="function-list"/>
 <br><br>
 
-```
-python
+```python
 # Function_base_view in api view
 # The type of requests we want it to process ( we have 4 request models in API: 1. Get (read), 2. Post (create),
 # 3. Delete (delete), 4. Put (update) )
@@ -156,8 +151,7 @@ def all_todos(request: Request):
 🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Function<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/function-detail.png?raw=true" width="1000" height="500" alt="function-detail"/><br><br>
 
-```
-python
+```python
 @api_view(['GET', 'PUT', 'DELETE'])
 def todo_detail_view(request: Request, todo_id: int):
     try:
@@ -181,8 +175,7 @@ def todo_detail_view(request: Request, todo_id: int):
         return Response(None, status.HTTP_204_NO_CONTENT)
   ```
 🌟 Addressing in the `urls.py` file <br>
-```
-python
+```python
 from django.urls import path, include
 from . import views
 urlpatterns = [
@@ -198,8 +191,7 @@ urlpatterns = [
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/function%20&%20class%20-%20post.png?raw=true" width="1000" height="500" alt="class-list"/>
 <br><br>
 
-```
-python
+```python
 # Class_base_view in api view
 class TodosListApiView(APIView):
     def get(self, request: Request):
@@ -219,8 +211,7 @@ class TodosListApiView(APIView):
 🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Class<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/class-detail.png?raw=true" width="1000" height="500" alt="class-detail"/><br><br>
 
-```
-python
+```python
 class TodosDetailApiView(APIView):
     def get_object(self, todo_id: int):
         try:
@@ -248,8 +239,7 @@ class TodosDetailApiView(APIView):
         return Response(None, status.HTTP_204_NO_CONTENT)
   ```
 🌟 Addressing in the `urls.py` file <br>
-```
-python
+```python
 from django.urls import path, include
 from . import views
 urlpatterns = [
@@ -265,8 +255,7 @@ urlpatterns = [
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/mixins%20&%20generics%20&%20viewsets%20-%20post.png?raw=true" width="1000" height="500" alt="mixins-list"/>
 <br><br>
 
-```
-python
+```python
 # Class_base_view in api view with Mixins
 # mixins.ListModelMixin ---> GET command
 # mixins.CreateModelMixin ---> POST command
@@ -285,8 +274,7 @@ class TodosListMixinApiView(mixins.ListModelMixin, mixins.CreateModelMixin, gene
 🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a Mixins<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/mixins-detail.png?raw=true" width="1000" height="500" alt="mixins-detail"/><br><br>
 
-```
-python
+```python
 # mixins.RetrieveModelMixin ---> GET command
 # mixins.UpdateModelMixin ---> PUT command
 # mixins.DestroyModelMixin ---> DELETE command
@@ -305,8 +293,7 @@ class TodosDetailMixinApiView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin
         return self.destroy(request, pk)
   ```
 🌟 Addressing in the `urls.py` file <br>
-```
-python
+```python
 from django.urls import path, include
 from . import views
 urlpatterns = [
@@ -322,8 +309,7 @@ urlpatterns = [
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/mixins%20&%20generics%20&%20viewsets%20-%20post.png?raw=true" width="1000" height="500" alt="generics-list"/>
 <br><br>
 
-```
-python
+```python
 # Custom paging system settings with class definition
 class TodosGenericApiViewPagination(PageNumberPagination):
     page_size = 3
@@ -343,8 +329,7 @@ class TodosListGenericApiView(generics.ListCreateAPIView):
 🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a generics<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/generics-detail.png?raw=true" width="1000" height="500" alt="generics-detail"/><br><br>
 
-```
-python
+```python
 class TodosDetailGenericApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Todo.objects.order_by('priority').all()
     serializer_class = TodoSerializer
@@ -368,8 +353,7 @@ urlpatterns = [
 🖥 Adding, Deleting and Editing the data detail with GET,DELETE,PUT as a viewsets<br>
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/viewsets-detail.png?raw=true" width="1000" height="500" alt="viewsets-detail"/><br><br>
 
-```
-python
+```python
 # Class_base_view in api view with Viewsets
 class TodosViewSetApiView(viewsets.ModelViewSet):
     queryset = Todo.objects.order_by('priority').all()
@@ -381,8 +365,7 @@ class TodosViewSetApiView(viewsets.ModelViewSet):
 
 🌟 Addressing in the `urls.py` file <br>
 
-```
-python
+```python
 from django.urls import path, include
 from . import views
 from rest_framework.routers import DefaultRouter
@@ -401,8 +384,7 @@ urlpatterns = [
 <img src="https://github.com/MaryaJamali/DjangoRestFrameworkProject/blob/main/img/user-2.png?raw=true" width="1000" height="500" alt="user"/>
 <br>
 
-```
-python
+```python
 # Class_base_view in api view with Generic for user
 class UsersGenericApiView(generics.ListAPIView):
     queryset = User.objects.all()
@@ -412,8 +394,7 @@ class UsersGenericApiView(generics.ListAPIView):
 
 🌟 Addressing in the `urls.py` file <br>
 
-```
-python
+```python
 from django.urls import path, include
 from . import views
 
@@ -427,8 +408,7 @@ urlpatterns = [
 
  `settings.py` file <br>
 
-```
-python
+```python
 # Note: These settings are global and only applies to viewsets and generics
 # Paging system settings related to the framework
 REST_FRAMEWORK = {
@@ -468,8 +448,7 @@ SIMPLE_JWT = {
 
 🌟 `urls.py` file <br>
  
-```
-python
+```python
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
